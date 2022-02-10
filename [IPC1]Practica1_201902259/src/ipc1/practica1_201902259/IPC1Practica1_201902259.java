@@ -59,12 +59,38 @@ public class IPC1Practica1_201902259 {
         int m = Integer.parseInt(tamtab[0]);
         int n = Integer.parseInt(tamtab[1]);
         double tamcom = (m * n) * (0.4);
+        double tampar = (m * n) * (0.2);
+        double tamtramp = (m * n) * (0.2);
         System.out.println("Ingrese cantidad de comida [0-" + (int) tamcom + "]");
-        comida = sn.nextInt();
-        System.out.println("Ingrese cantidad de paredes:");
-        paredes = sn.nextInt();
-        System.out.println("Ingrese cantidad de trampas:");
-        trampas = sn.nextInt();
+        //Para validar el rango
+        do {
+            comida = sn.nextInt();
+            if (comida > (int) tamcom || comida < 0) {
+                System.out.println("Valor fuera del rango");
+
+            }
+        } while (comida > (int) tamcom || comida < 0);
+
+        //paredes     
+        System.out.println("Ingrese cantidad de paredes [0-" + (int) tampar + "]");
+        
+        do {
+            paredes = sn.nextInt();
+            if (paredes > (int) tampar || paredes < 0) {
+                System.out.println("Valor fuera del rango");
+
+            }
+        } while (paredes > (int) tampar || paredes < 0);
+        //trampas        
+        System.out.println("Ingrese cantidad de trampas [0-" + (int) tamtramp + "]");
+        
+        do {
+            trampas = sn.nextInt();
+            if (trampas > (int) tamtramp || trampas < 0) {
+                System.out.println("Valor fuera del rango");
+
+            }
+        } while (trampas > (int) tamtramp || trampas < 0);
 
         //System.out.println("m:" + m);
         //System.out.println("n" + n);
@@ -86,9 +112,14 @@ public class IPC1Practica1_201902259 {
             } else {
                 x = "?";
             }
-            tablerocomida[ran.nextInt((mm - 0) + 1)][ran.nextInt((nn - 0) + 1)] = x;
 
-            contador++;
+            int i = ran.nextInt((mm - 0) + 1);
+            int j = ran.nextInt((nn - 0) + 1);
+            if (tablerocomida[i][j].equals(" ")) {
+                tablerocomida[i][j] = x;
+                contador++;
+            }
+
         }
 
         for (int i = 0; i < m; i++) {
@@ -98,7 +129,7 @@ public class IPC1Practica1_201902259 {
             System.out.println("");
 
         }
-            //tablero pared
+        //tablero pared
         tableropared = new String[m][n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
