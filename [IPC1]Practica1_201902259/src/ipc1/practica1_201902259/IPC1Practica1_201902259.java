@@ -175,7 +175,7 @@ public class IPC1Practica1_201902259 {
             }
 
         }
-        
+
         for (int j = 0; j < m; j++) {
             for (int k = 0; k < n; k++) {
                 System.out.print(tablerotrampas[j][k] + "|");
@@ -183,19 +183,44 @@ public class IPC1Practica1_201902259 {
             }
             System.out.println("");
         }
-        
-        
-        
-        
-        
+        System.out.println("-----------------------");
+        tablerounido(m, n);
     }
-    public static void tablerounido(){
-    
-    
-    
-    
-    
-    
-    
+    static String[][] tablerojuego;
+
+    public static void tablerounido(int x, int y) {
+        tablerojuego = new String[x][y];
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                tablerojuego[i][j] = " ";
+            }
+
+        }
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                if (!tablerocomida[i][j].equals(" ")) {
+                    tablerojuego[i][j] = tablerocomida[i][j];
+
+                }
+                if (!tablerotrampas[i][j].equals(" ")) {
+                    tablerojuego[i][j] = tablerotrampas[i][j];
+                }
+
+                if (!tableropared[i][j].equals(" ")) {
+                    tablerojuego[i][j] = tableropared[i][j];
+
+                }
+
+            }
+
+        }
+        for (int j = 0; j < x; j++) {
+            for (int k = 0; k < y; k++) {
+                System.out.print(tablerojuego[j][k] + "|");
+
+            }
+            System.out.println("");
+        }
+
     }
 }
