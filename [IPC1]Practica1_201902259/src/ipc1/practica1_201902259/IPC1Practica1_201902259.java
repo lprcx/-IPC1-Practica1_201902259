@@ -43,9 +43,10 @@ public class IPC1Practica1_201902259 {
         } while (opcion != 3);
 
     }
-
+    //Creación de matrices globales
     static String[][] tablerocomida;
     static String[][] tableropared;
+    static String[][] tablerotrampas;
 
     public static void menuJuego() {
         Scanner sn = new Scanner(System.in);
@@ -73,7 +74,7 @@ public class IPC1Practica1_201902259 {
 
         //paredes     
         System.out.println("Ingrese cantidad de paredes [0-" + (int) tampar + "]");
-        
+
         do {
             paredes = sn.nextInt();
             if (paredes > (int) tampar || paredes < 0) {
@@ -83,7 +84,7 @@ public class IPC1Practica1_201902259 {
         } while (paredes > (int) tampar || paredes < 0);
         //trampas        
         System.out.println("Ingrese cantidad de trampas [0-" + (int) tamtramp + "]");
-        
+
         do {
             trampas = sn.nextInt();
             if (trampas > (int) tamtramp || trampas < 0) {
@@ -125,6 +126,7 @@ public class IPC1Practica1_201902259 {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 System.out.print(tablerocomida[i][j] + "|");
+
             }
             System.out.println("");
 
@@ -135,8 +137,65 @@ public class IPC1Practica1_201902259 {
             for (int j = 0; j < n; j++) {
                 tableropared[i][j] = " ";
             }
+        }
+        int contadorr = 1;
+        while (contadorr <= paredes) {
+
+            int k = ran.nextInt((mm - 0) + 1);
+            int l = ran.nextInt((nn - 0) + 1);
+            if (tableropared[k][l].equals(" ")) {
+                tableropared[k][l] = "#";
+                contadorr++;
+            }
 
         }
+        for (int j = 0; j < m; j++) {
+            for (int k = 0; k < n; k++) {
+                System.out.print(tableropared[j][k] + "|");
 
+            }
+            System.out.println("");
+        }
+
+        //tablero trampas
+        tablerotrampas = new String[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                tablerotrampas[i][j] = " ";
+            }
+        }
+        int contadorrr = 1;
+        while (contadorrr <= trampas) {
+
+            int k = ran.nextInt((mm - 0) + 1);
+            int l = ran.nextInt((nn - 0) + 1);
+            if (tablerotrampas[k][l].equals(" ")) {
+                tablerotrampas[k][l] = "X";
+                contadorrr++;
+            }
+
+        }
+        
+        for (int j = 0; j < m; j++) {
+            for (int k = 0; k < n; k++) {
+                System.out.print(tablerotrampas[j][k] + "|");
+
+            }
+            System.out.println("");
+        }
+        
+        
+        
+        
+        
+    }
+    public static void tablerounido(){
+    
+    
+    
+    
+    
+    
+    
     }
 }
