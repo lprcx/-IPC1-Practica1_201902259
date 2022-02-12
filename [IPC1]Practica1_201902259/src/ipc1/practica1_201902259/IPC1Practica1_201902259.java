@@ -47,7 +47,10 @@ public class IPC1Practica1_201902259 {
     static String[][] tablerocomida;
     static String[][] tableropared;
     static String[][] tablerotrampas;
-
+    static String[] iconos;
+    static int iconjug;
+    static String ficha;
+    
     public static void menuJuego() {
         Scanner sn = new Scanner(System.in);
         Random ran = new Random();
@@ -102,6 +105,29 @@ public class IPC1Practica1_201902259 {
             }
 
         }
+        
+        //Icono
+        int[] ascci = {178, 175, 166, 195, 184, 244, 169, 157, 190, 241};
+        iconos = new String[10];
+        char[] ico = new char[10];
+        for (int i = 0; i < 10; i++) {
+            ico[i] = (char)ascci[i];
+            iconos[i] = String.valueOf(ico[i]);
+        }
+        
+        System.out.println("Seleccione un número de icono:");
+        for (int i = 0; i < 10; i++) {
+            System.out.print((i +1) + ". " + iconos[i] + "       ");
+        }
+        System.out.println("");
+        iconjug = sn.nextInt();
+        
+        ficha = iconos[iconjug-1];
+        System.out.println("tu ficha es: " + ficha);
+        
+        
+        
+        
         //Estableciendo la comida aleatoriamente
         int mm = m - 1;
         int nn = n - 1;
@@ -122,7 +148,7 @@ public class IPC1Practica1_201902259 {
             }
 
         }
-
+/*
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 System.out.print(tablerocomida[i][j] + "|");
@@ -130,7 +156,7 @@ public class IPC1Practica1_201902259 {
             }
             System.out.println("");
 
-        }
+        } */
         //tablero pared
         tableropared = new String[m][n];
         for (int i = 0; i < m; i++) {
@@ -149,6 +175,7 @@ public class IPC1Practica1_201902259 {
             }
 
         }
+        /*
         for (int j = 0; j < m; j++) {
             for (int k = 0; k < n; k++) {
                 System.out.print(tableropared[j][k] + "|");
@@ -156,7 +183,7 @@ public class IPC1Practica1_201902259 {
             }
             System.out.println("");
         }
-
+*/
         //tablero trampas
         tablerotrampas = new String[m][n];
         for (int i = 0; i < m; i++) {
@@ -175,7 +202,7 @@ public class IPC1Practica1_201902259 {
             }
 
         }
-
+         /*
         for (int j = 0; j < m; j++) {
             for (int k = 0; k < n; k++) {
                 System.out.print(tablerotrampas[j][k] + "|");
@@ -183,7 +210,9 @@ public class IPC1Practica1_201902259 {
             }
             System.out.println("");
         }
+        */
         System.out.println("-----------------------");
+        System.out.println("Jugador: " + nombre);
         tablerounido(m, n);
     }
     static String[][] tablerojuego;
