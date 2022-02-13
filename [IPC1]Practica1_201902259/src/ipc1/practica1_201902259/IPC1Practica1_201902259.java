@@ -298,12 +298,11 @@ public class IPC1Practica1_201902259 {
             switch (cambpos) {
                 case "a":
                     int yjaux = 0;
-                    if ((yj - 1 )<0) {
-                        yjaux = tablerojuego[0].length - 1; 
-                        
-                    }
-                    else{
-                        yjaux = yj -1;
+                    if ((yj - 1) < 0) {
+                        yjaux = tablerojuego[0].length - 1;
+
+                    } else {
+                        yjaux = yj - 1;
                     }
                     if (tablerojuego[xj][yjaux].equals("@")) {
                         tablerojuego[xj][yj] = " ";
@@ -316,8 +315,7 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
-                    }
-                    else if (tablerojuego[xj][yjaux].equals("?")) {
+                    } else if (tablerojuego[xj][yjaux].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         yj = yj - 1;
                         if (yj < 0) {
@@ -328,9 +326,8 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
-                    }
-                    else {
-                         tablerojuego[xj][yj] = " ";
+                    } else {
+                        tablerojuego[xj][yj] = " ";
                         yj = yj - 1;
                         if (yj < 0) {
                             yj = tablerojuego[0].length - 1;
@@ -344,17 +341,16 @@ public class IPC1Practica1_201902259 {
                     break;
                 case "s":
                     int xjaux1 = 0;
-                    if ((xj + 1 )>(tablerojuego.length - 1)) {
-                        xjaux1 = 0; 
-                      
-                    }
-                    else{
-                        xjaux1 = xj +1;
+                    if ((xj + 1) > (tablerojuego.length - 1)) {
+                        xjaux1 = 0;
+
+                    } else {
+                        xjaux1 = xj + 1;
                     }
                     if (tablerojuego[xjaux1][yj].equals("@")) {
                         tablerojuego[xj][yj] = " ";
                         xj = xj + 1;
-                        if (xj >(tablerojuego.length - 1)) {
+                        if (xj > (tablerojuego.length - 1)) {
                             xj = 0;
                             tablerojuego[xj][yj] = ficha;
 
@@ -362,11 +358,10 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
-                    }
-                    else if (tablerojuego[xjaux1][yj].equals("?")) {
+                    } else if (tablerojuego[xjaux1][yj].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         xj = xj + 1;
-                        if (xj >(tablerojuego.length - 1)) {
+                        if (xj > (tablerojuego.length - 1)) {
                             xj = 0;
                             tablerojuego[xj][yj] = ficha;
 
@@ -374,11 +369,10 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
-                    }
-                    else {
+                    } else {
                         tablerojuego[xj][yj] = " ";
                         xj = xj + 1;
-                        if (xj >(tablerojuego.length - 1)) {
+                        if (xj > (tablerojuego.length - 1)) {
                             xj = 0;
                             tablerojuego[xj][yj] = ficha;
 
@@ -390,12 +384,11 @@ public class IPC1Practica1_201902259 {
                     break;
                 case "w":
                     int xjaux = 0;
-                    if ((xj - 1 )<0) {
-                        xjaux = tablerojuego.length - 1; 
-                        
-                    }
-                    else{
-                        xjaux = xj -1;
+                    if ((xj - 1) < 0) {
+                        xjaux = tablerojuego.length - 1;
+
+                    } else {
+                        xjaux = xj - 1;
                     }
                     if (tablerojuego[xjaux][yj].equals("@")) {
                         tablerojuego[xj][yj] = " ";
@@ -408,8 +401,7 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
-                    }
-                    else if (tablerojuego[xjaux][yj].equals("?")) {
+                    } else if (tablerojuego[xjaux][yj].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         xj = xj - 1;
                         if (xj < 0) {
@@ -420,9 +412,8 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
-                    }
-                    else {
-                         tablerojuego[xj][yj] = " ";
+                    } else {
+                        tablerojuego[xj][yj] = " ";
                         xj = xj - 1;
                         if (xj < 0) {
                             xj = tablerojuego.length - 1;
@@ -436,17 +427,16 @@ public class IPC1Practica1_201902259 {
                     break;
                 case "d":
                     int yjaux1 = 0;
-                    if ((yj + 1 )>(tablerojuego[0].length - 1)) {
-                        yjaux1 = 0; 
-                      
-                    }
-                    else{
-                        yjaux1 = yj +1;
+                    if ((yj + 1) > (tablerojuego[0].length - 1)) {
+                        yjaux1 = 0;
+
+                    } else {
+                        yjaux1 = yj + 1;
                     }
                     if (tablerojuego[xj][yjaux1].equals("@")) {
                         tablerojuego[xj][yj] = " ";
                         yj = yj + 1;
-                        if (yj >(tablerojuego[0].length - 1)) {
+                        if (yj > (tablerojuego[0].length - 1)) {
                             yj = 0;
                             tablerojuego[xj][yj] = ficha;
 
@@ -454,11 +444,10 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
-                    }
-                    else if (tablerojuego[xj][yjaux1].equals("?")) {
+                    } else if (tablerojuego[xj][yjaux1].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         yj = yj + 1;
-                        if (yj >(tablerojuego[0].length - 1)) {
+                        if (yj > (tablerojuego[0].length - 1)) {
                             yj = 0;
                             tablerojuego[xj][yj] = ficha;
 
@@ -466,11 +455,10 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
-                    }
-                    else {
+                    } else {
                         tablerojuego[xj][yj] = " ";
                         yj = yj + 1;
-                        if (yj >(tablerojuego[0].length - 1)) {
+                        if (yj > (tablerojuego[0].length - 1)) {
                             yj = 0;
                             tablerojuego[xj][yj] = ficha;
 
@@ -481,13 +469,12 @@ public class IPC1Practica1_201902259 {
 
                     break;
                 case "4":
-                    
-                    if ((yj - 1 )<0) {
-                        yjaux = tablerojuego[0].length - 1; 
-                        
-                    }
-                    else{
-                        yjaux = yj -1;
+
+                    if ((yj - 1) < 0) {
+                        yjaux = tablerojuego[0].length - 1;
+
+                    } else {
+                        yjaux = yj - 1;
                     }
                     if (tablerojuego[xj][yjaux].equals("@") || tablerojuego[xj][yjaux].equals("@")) {
                         tablerojuego[xj][yj] = " ";
@@ -500,8 +487,7 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
-                    }
-                    else if (tablerojuego[xj][yjaux].equals("?") || tablerojuego[xj][yjaux].equals("?")) {
+                    } else if (tablerojuego[xj][yjaux].equals("?") || tablerojuego[xj][yjaux].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         yj = yj - 1;
                         if (yj < 0) {
@@ -512,9 +498,8 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
-                    }
-                    else {
-                         tablerojuego[xj][yj] = " ";
+                    } else {
+                        tablerojuego[xj][yj] = " ";
                         yj = yj - 1;
                         if (yj < 0) {
                             yj = tablerojuego[0].length - 1;
@@ -526,19 +511,18 @@ public class IPC1Practica1_201902259 {
                     }
 
                     break;
-                    
+
                 case "5":
-                    if ((xj + 1 )>(tablerojuego.length - 1)) {
-                        xjaux1 = 0; 
-                      
-                    }
-                    else{
-                        xjaux1 = xj +1;
+                    if ((xj + 1) > (tablerojuego.length - 1)) {
+                        xjaux1 = 0;
+
+                    } else {
+                        xjaux1 = xj + 1;
                     }
                     if (tablerojuego[xjaux1][yj].equals("@")) {
                         tablerojuego[xj][yj] = " ";
                         xj = xj + 1;
-                        if (xj >(tablerojuego.length - 1)) {
+                        if (xj > (tablerojuego.length - 1)) {
                             xj = 0;
                             tablerojuego[xj][yj] = ficha;
 
@@ -546,11 +530,10 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
-                    }
-                    else if (tablerojuego[xjaux1][yj].equals("?")) {
+                    } else if (tablerojuego[xjaux1][yj].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         xj = xj + 1;
-                        if (xj >(tablerojuego.length - 1)) {
+                        if (xj > (tablerojuego.length - 1)) {
                             xj = 0;
                             tablerojuego[xj][yj] = ficha;
 
@@ -558,11 +541,10 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
-                    }
-                    else {
+                    } else {
                         tablerojuego[xj][yj] = " ";
                         xj = xj + 1;
-                        if (xj >(tablerojuego.length - 1)) {
+                        if (xj > (tablerojuego.length - 1)) {
                             xj = 0;
                             tablerojuego[xj][yj] = ficha;
 
@@ -572,14 +554,13 @@ public class IPC1Practica1_201902259 {
                     }
 
                     break;
-                                   
+
                 case "8":
-                    if ((xj - 1 )<0) {
-                        xjaux = tablerojuego.length - 1; 
-                        
-                    }
-                    else{
-                        xjaux = xj -1;
+                    if ((xj - 1) < 0) {
+                        xjaux = tablerojuego.length - 1;
+
+                    } else {
+                        xjaux = xj - 1;
                     }
                     if (tablerojuego[xjaux][yj].equals("@")) {
                         tablerojuego[xj][yj] = " ";
@@ -592,8 +573,7 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
-                    }
-                    else if (tablerojuego[xjaux][yj].equals("?")) {
+                    } else if (tablerojuego[xjaux][yj].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         xj = xj - 1;
                         if (xj < 0) {
@@ -604,9 +584,13 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
-                    }
-                    else {
-                         tablerojuego[xj][yj] = " ";
+                    } else if (tablerojuego[xjaux][yj].equals("X")) {
+                        vidas = vidas - 1;
+
+                    } else if (tablerojuego[xjaux][yj].equals("#")) {
+
+                    } else {
+                        tablerojuego[xj][yj] = " ";
                         xj = xj - 1;
                         if (xj < 0) {
                             xj = tablerojuego.length - 1;
@@ -619,18 +603,17 @@ public class IPC1Practica1_201902259 {
 
                     break;
                 case "6":
-                    
-                    if ((yj + 1 )>(tablerojuego[0].length - 1)) {
-                        yjaux1 = 0; 
-                      
-                    }
-                    else{
-                        yjaux1 = yj +1;
+
+                    if ((yj + 1) > (tablerojuego[0].length - 1)) {
+                        yjaux1 = 0;
+
+                    } else {
+                        yjaux1 = yj + 1;
                     }
                     if (tablerojuego[xj][yjaux1].equals("@")) {
                         tablerojuego[xj][yj] = " ";
                         yj = yj + 1;
-                        if (yj >(tablerojuego[0].length - 1)) {
+                        if (yj > (tablerojuego[0].length - 1)) {
                             yj = 0;
                             tablerojuego[xj][yj] = ficha;
 
@@ -638,11 +621,10 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
-                    }
-                    else if (tablerojuego[xj][yjaux1].equals("?")) {
+                    } else if (tablerojuego[xj][yjaux1].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         yj = yj + 1;
-                        if (yj >(tablerojuego[0].length - 1)) {
+                        if (yj > (tablerojuego[0].length - 1)) {
                             yj = 0;
                             tablerojuego[xj][yj] = ficha;
 
@@ -650,11 +632,10 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
-                    }
-                    else {
+                    } else {
                         tablerojuego[xj][yj] = " ";
                         yj = yj + 1;
-                        if (yj >(tablerojuego[0].length - 1)) {
+                        if (yj > (tablerojuego[0].length - 1)) {
                             yj = 0;
                             tablerojuego[xj][yj] = ficha;
 
@@ -672,7 +653,21 @@ public class IPC1Practica1_201902259 {
                     break;
 
             }
+            if (vidas == 0) {
+                System.out.println("                                                                                       \n"
+                        + " @@@@@@@@   @@@@@@   @@@@@@@@@@   @@@@@@@@      @@@@@@   @@@  @@@  @@@@@@@@  @@@@@@@   \n"
+                        + "@@@@@@@@@  @@@@@@@@  @@@@@@@@@@@  @@@@@@@@     @@@@@@@@  @@@  @@@  @@@@@@@@  @@@@@@@@  \n"
+                        + "!@@        @@!  @@@  @@! @@! @@!  @@!          @@!  @@@  @@!  @@@  @@!       @@!  @@@  \n"
+                        + "!@!        !@!  @!@  !@! !@! !@!  !@!          !@!  @!@  !@!  @!@  !@!       !@!  @!@  \n"
+                        + "!@! @!@!@  @!@!@!@!  @!! !!@ @!@  @!!!:!       @!@  !@!  @!@  !@!  @!!!:!    @!@!!@!   \n"
+                        + "!!! !!@!!  !!!@!!!!  !@!   ! !@!  !!!!!:       !@!  !!!  !@!  !!!  !!!!!:    !!@!@!    \n"
+                        + ":!!   !!:  !!:  !!!  !!:     !!:  !!:          !!:  !!!  :!:  !!:  !!:       !!: :!!   \n"
+                        + ":!:   !::  :!:  !:!  :!:     :!:  :!:          :!:  !:!   ::!!:!   :!:       :!:  !:!  \n"
+                        + " ::: ::::  ::   :::  :::     ::    :: ::::     ::::: ::    ::::     :: ::::  ::   :::  \n"
+                        + " :: :: :    :   : :   :      :    : :: ::       : :  :      :      : :: ::    :   : :");
+                break;
 
+            }
         } while (!cambpos.equals("e"));
     }
 }
