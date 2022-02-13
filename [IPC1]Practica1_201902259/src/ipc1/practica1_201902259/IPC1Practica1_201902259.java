@@ -274,14 +274,13 @@ public class IPC1Practica1_201902259 {
     }
 
     public static void Jugar(int xj, int yj, String fichajug, String nombre) {
-        
+
         Scanner sn = new Scanner(System.in);
         tablerojuego[xj][yj] = fichajug;
         int punteo = 0;
         int vidas = 3;
         String cambpos = "";
-        
-        
+
         do {
             System.out.println("--------------");
             System.out.println("Jugador: " + nombre + "     Punteo: " + punteo + "      Vidas: " + vidas);
@@ -296,116 +295,384 @@ public class IPC1Practica1_201902259 {
                 System.out.println("");
             }
             cambpos = sn.next();
-            switch(cambpos){
+            switch (cambpos) {
                 case "a":
-                    tablerojuego[xj][yj] = " ";
-                    yj = yj - 1;
-                    if (yj < 0) {
-                        yj = tablerojuego[0].length-1;
-                        tablerojuego[xj][yj] = ficha;
-                                          
+                    int yjaux = 0;
+                    if ((yj - 1 )<0) {
+                        yjaux = tablerojuego[0].length - 1; 
+                        
+                    }
+                    else{
+                        yjaux = yj -1;
+                    }
+                    if (tablerojuego[xj][yjaux].equals("@")) {
+                        tablerojuego[xj][yj] = " ";
+                        yj = yj - 1;
+                        if (yj < 0) {
+                            yj = tablerojuego[0].length - 1;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 5;
+                    }
+                    else if (tablerojuego[xj][yjaux].equals("?")) {
+                        tablerojuego[xj][yj] = " ";
+                        yj = yj - 1;
+                        if (yj < 0) {
+                            yj = tablerojuego[0].length - 1;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 10;
                     }
                     else {
-                        tablerojuego[xj][yj] = ficha;
+                         tablerojuego[xj][yj] = " ";
+                        yj = yj - 1;
+                        if (yj < 0) {
+                            yj = tablerojuego[0].length - 1;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
                     }
-                    
+
                     break;
                 case "s":
-                    tablerojuego[xj][yj] = " ";
-                    xj = xj + 1;
-                    if (xj > (tablerojuego.length - 1)) {
-                        xj = 0;
-                        tablerojuego[xj][yj] = ficha;
+                    int xjaux1 = 0;
+                    if ((xj + 1 )>(tablerojuego.length - 1)) {
+                        xjaux1 = 0; 
+                      
+                    }
+                    else{
+                        xjaux1 = xj +1;
+                    }
+                    if (tablerojuego[xjaux1][yj].equals("@")) {
+                        tablerojuego[xj][yj] = " ";
+                        xj = xj + 1;
+                        if (xj >(tablerojuego.length - 1)) {
+                            xj = 0;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 5;
+                    }
+                    else if (tablerojuego[xjaux1][yj].equals("?")) {
+                        tablerojuego[xj][yj] = " ";
+                        xj = xj + 1;
+                        if (xj >(tablerojuego.length - 1)) {
+                            xj = 0;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 10;
                     }
                     else {
-                        tablerojuego[xj][yj] = ficha;
+                        tablerojuego[xj][yj] = " ";
+                        xj = xj + 1;
+                        if (xj >(tablerojuego.length - 1)) {
+                            xj = 0;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
                     }
+
                     break;
                 case "w":
-                   tablerojuego[xj][yj] = " ";
-                    xj = xj - 1;
-                    if (xj < 0) {
-                        xj = tablerojuego.length-1;
-                        tablerojuego[xj][yj] = ficha;
-                                          
+                    int xjaux = 0;
+                    if ((xj - 1 )<0) {
+                        xjaux = tablerojuego.length - 1; 
+                        
+                    }
+                    else{
+                        xjaux = xj -1;
+                    }
+                    if (tablerojuego[xjaux][yj].equals("@")) {
+                        tablerojuego[xj][yj] = " ";
+                        xj = xj - 1;
+                        if (xj < 0) {
+                            xj = tablerojuego.length - 1;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 5;
+                    }
+                    else if (tablerojuego[xjaux][yj].equals("?")) {
+                        tablerojuego[xj][yj] = " ";
+                        xj = xj - 1;
+                        if (xj < 0) {
+                            xj = tablerojuego.length - 1;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 10;
                     }
                     else {
-                        tablerojuego[xj][yj] = ficha;
+                         tablerojuego[xj][yj] = " ";
+                        xj = xj - 1;
+                        if (xj < 0) {
+                            xj = tablerojuego.length - 1;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
                     }
-                    
+
                     break;
                 case "d":
-                    tablerojuego[xj][yj] = " ";
-                    yj = yj + 1;
-                    if (yj > (tablerojuego[0].length - 1)) {
-                        yj = 0;
-                        tablerojuego[xj][yj] = ficha;
+                    int yjaux1 = 0;
+                    if ((yj + 1 )>(tablerojuego[0].length - 1)) {
+                        yjaux1 = 0; 
+                      
+                    }
+                    else{
+                        yjaux1 = yj +1;
+                    }
+                    if (tablerojuego[xj][yjaux1].equals("@")) {
+                        tablerojuego[xj][yj] = " ";
+                        yj = yj + 1;
+                        if (yj >(tablerojuego[0].length - 1)) {
+                            yj = 0;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 5;
+                    }
+                    else if (tablerojuego[xj][yjaux1].equals("?")) {
+                        tablerojuego[xj][yj] = " ";
+                        yj = yj + 1;
+                        if (yj >(tablerojuego[0].length - 1)) {
+                            yj = 0;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 10;
                     }
                     else {
-                        tablerojuego[xj][yj] = ficha;
+                        tablerojuego[xj][yj] = " ";
+                        yj = yj + 1;
+                        if (yj >(tablerojuego[0].length - 1)) {
+                            yj = 0;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
                     }
+
                     break;
                 case "4":
-                    tablerojuego[xj][yj] = " ";
-                    yj = yj - 1;
-                    if (yj < 0) {
-                        yj = tablerojuego[0].length-1;
-                        tablerojuego[xj][yj] = ficha;
-                                          
-                    }
-                    else {
-                        tablerojuego[xj][yj] = ficha;
-                    }
-                    break;
-                case "5":
-                    tablerojuego[xj][yj] = " ";
-                    xj = xj + 1;
-                    if (xj > (tablerojuego.length - 1)) {
-                        xj = 0;
-                        tablerojuego[xj][yj] = ficha;
-                    }
-                    else {
-                        tablerojuego[xj][yj] = ficha;
-                    }
-                    break;
-                case "8":
-                    tablerojuego[xj][yj] = " ";
-                    xj = xj - 1;
-                    if (xj < 0) {
-                        xj = tablerojuego.length-1;
-                        tablerojuego[xj][yj] = ficha;
-                                          
-                    }
-                    else {
-                        tablerojuego[xj][yj] = ficha;
-                    }
                     
+                    if ((yj - 1 )<0) {
+                        yjaux = tablerojuego[0].length - 1; 
+                        
+                    }
+                    else{
+                        yjaux = yj -1;
+                    }
+                    if (tablerojuego[xj][yjaux].equals("@") || tablerojuego[xj][yjaux].equals("@")) {
+                        tablerojuego[xj][yj] = " ";
+                        yj = yj - 1;
+                        if (yj < 0) {
+                            yj = tablerojuego[0].length - 1;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 5;
+                    }
+                    else if (tablerojuego[xj][yjaux].equals("?") || tablerojuego[xj][yjaux].equals("?")) {
+                        tablerojuego[xj][yj] = " ";
+                        yj = yj - 1;
+                        if (yj < 0) {
+                            yj = tablerojuego[0].length - 1;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 10;
+                    }
+                    else {
+                         tablerojuego[xj][yj] = " ";
+                        yj = yj - 1;
+                        if (yj < 0) {
+                            yj = tablerojuego[0].length - 1;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                    }
+
+                    break;
+                    
+                case "5":
+                    if ((xj + 1 )>(tablerojuego.length - 1)) {
+                        xjaux1 = 0; 
+                      
+                    }
+                    else{
+                        xjaux1 = xj +1;
+                    }
+                    if (tablerojuego[xjaux1][yj].equals("@")) {
+                        tablerojuego[xj][yj] = " ";
+                        xj = xj + 1;
+                        if (xj >(tablerojuego.length - 1)) {
+                            xj = 0;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 5;
+                    }
+                    else if (tablerojuego[xjaux1][yj].equals("?")) {
+                        tablerojuego[xj][yj] = " ";
+                        xj = xj + 1;
+                        if (xj >(tablerojuego.length - 1)) {
+                            xj = 0;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 10;
+                    }
+                    else {
+                        tablerojuego[xj][yj] = " ";
+                        xj = xj + 1;
+                        if (xj >(tablerojuego.length - 1)) {
+                            xj = 0;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                    }
+
+                    break;
+                                   
+                case "8":
+                    if ((xj - 1 )<0) {
+                        xjaux = tablerojuego.length - 1; 
+                        
+                    }
+                    else{
+                        xjaux = xj -1;
+                    }
+                    if (tablerojuego[xjaux][yj].equals("@")) {
+                        tablerojuego[xj][yj] = " ";
+                        xj = xj - 1;
+                        if (xj < 0) {
+                            xj = tablerojuego.length - 1;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 5;
+                    }
+                    else if (tablerojuego[xjaux][yj].equals("?")) {
+                        tablerojuego[xj][yj] = " ";
+                        xj = xj - 1;
+                        if (xj < 0) {
+                            xj = tablerojuego.length - 1;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 10;
+                    }
+                    else {
+                         tablerojuego[xj][yj] = " ";
+                        xj = xj - 1;
+                        if (xj < 0) {
+                            xj = tablerojuego.length - 1;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                    }
+
                     break;
                 case "6":
-                    tablerojuego[xj][yj] = " ";
-                    yj = yj + 1;
-                    if (yj > (tablerojuego[0].length - 1)) {
-                        yj = 0;
-                        tablerojuego[xj][yj] = ficha;
+                    
+                    if ((yj + 1 )>(tablerojuego[0].length - 1)) {
+                        yjaux1 = 0; 
+                      
+                    }
+                    else{
+                        yjaux1 = yj +1;
+                    }
+                    if (tablerojuego[xj][yjaux1].equals("@")) {
+                        tablerojuego[xj][yj] = " ";
+                        yj = yj + 1;
+                        if (yj >(tablerojuego[0].length - 1)) {
+                            yj = 0;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 5;
+                    }
+                    else if (tablerojuego[xj][yjaux1].equals("?")) {
+                        tablerojuego[xj][yj] = " ";
+                        yj = yj + 1;
+                        if (yj >(tablerojuego[0].length - 1)) {
+                            yj = 0;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
+                        punteo = punteo + 10;
                     }
                     else {
-                        tablerojuego[xj][yj] = ficha;
+                        tablerojuego[xj][yj] = " ";
+                        yj = yj + 1;
+                        if (yj >(tablerojuego[0].length - 1)) {
+                            yj = 0;
+                            tablerojuego[xj][yj] = ficha;
+
+                        } else {
+                            tablerojuego[xj][yj] = ficha;
+                        }
                     }
+
                     break;
                 case "e":
                     System.out.println("------------");
                     break;
                 default:
-                    System.out.println("Ingrese un comando válido");                   
+                    System.out.println("Ingrese un comando válido");
                     break;
-                
-                
+
             }
-            
-            
-            
-            
-            
+
         } while (!cambpos.equals("e"));
     }
 }
