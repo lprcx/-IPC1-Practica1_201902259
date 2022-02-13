@@ -214,13 +214,12 @@ public class IPC1Practica1_201902259 {
         tablerounido(m, n);
 
         //Posición inicial del jugador
-        
         System.out.println("-----------------------");
         System.out.println("Ingrese la posición inicial del Jugador (fila,columna)");
 
         int filaj;
         int columnaj;
-        
+
         do {
             posicion = sn.next();
             String[] postab = posicion.split(",");
@@ -234,6 +233,7 @@ public class IPC1Practica1_201902259 {
             }
         } while (filaj > m || columnaj > n);
 
+        Jugar(filaj, columnaj, ficha, nombre);
     }
     static String[][] tablerojuego;
 
@@ -271,5 +271,141 @@ public class IPC1Practica1_201902259 {
             System.out.println("");
         }
 
+    }
+
+    public static void Jugar(int xj, int yj, String fichajug, String nombre) {
+        
+        Scanner sn = new Scanner(System.in);
+        tablerojuego[xj][yj] = fichajug;
+        int punteo = 0;
+        int vidas = 3;
+        String cambpos = "";
+        
+        
+        do {
+            System.out.println("--------------");
+            System.out.println("Jugador: " + nombre + "     Punteo: " + punteo + "      Vidas: " + vidas);
+
+            for (int j = 0; j < tablerojuego.length; j++) {
+                System.out.print("|");
+                for (int k = 0; k < tablerojuego[j].length; k++) {
+                    System.out.print(tablerojuego[j][k] + "  ");
+
+                }
+                System.out.print("|");
+                System.out.println("");
+            }
+            cambpos = sn.next();
+            switch(cambpos){
+                case "a":
+                    tablerojuego[xj][yj] = " ";
+                    yj = yj - 1;
+                    if (yj < 0) {
+                        yj = tablerojuego[0].length-1;
+                        tablerojuego[xj][yj] = ficha;
+                                          
+                    }
+                    else {
+                        tablerojuego[xj][yj] = ficha;
+                    }
+                    
+                    break;
+                case "s":
+                    tablerojuego[xj][yj] = " ";
+                    xj = xj + 1;
+                    if (xj > (tablerojuego.length - 1)) {
+                        xj = 0;
+                        tablerojuego[xj][yj] = ficha;
+                    }
+                    else {
+                        tablerojuego[xj][yj] = ficha;
+                    }
+                    break;
+                case "w":
+                   tablerojuego[xj][yj] = " ";
+                    xj = xj - 1;
+                    if (xj < 0) {
+                        xj = tablerojuego.length-1;
+                        tablerojuego[xj][yj] = ficha;
+                                          
+                    }
+                    else {
+                        tablerojuego[xj][yj] = ficha;
+                    }
+                    
+                    break;
+                case "d":
+                    tablerojuego[xj][yj] = " ";
+                    yj = yj + 1;
+                    if (yj > (tablerojuego[0].length - 1)) {
+                        yj = 0;
+                        tablerojuego[xj][yj] = ficha;
+                    }
+                    else {
+                        tablerojuego[xj][yj] = ficha;
+                    }
+                    break;
+                case "4":
+                    tablerojuego[xj][yj] = " ";
+                    yj = yj - 1;
+                    if (yj < 0) {
+                        yj = tablerojuego[0].length-1;
+                        tablerojuego[xj][yj] = ficha;
+                                          
+                    }
+                    else {
+                        tablerojuego[xj][yj] = ficha;
+                    }
+                    break;
+                case "5":
+                    tablerojuego[xj][yj] = " ";
+                    xj = xj + 1;
+                    if (xj > (tablerojuego.length - 1)) {
+                        xj = 0;
+                        tablerojuego[xj][yj] = ficha;
+                    }
+                    else {
+                        tablerojuego[xj][yj] = ficha;
+                    }
+                    break;
+                case "8":
+                    tablerojuego[xj][yj] = " ";
+                    xj = xj - 1;
+                    if (xj < 0) {
+                        xj = tablerojuego.length-1;
+                        tablerojuego[xj][yj] = ficha;
+                                          
+                    }
+                    else {
+                        tablerojuego[xj][yj] = ficha;
+                    }
+                    
+                    break;
+                case "6":
+                    tablerojuego[xj][yj] = " ";
+                    yj = yj + 1;
+                    if (yj > (tablerojuego[0].length - 1)) {
+                        yj = 0;
+                        tablerojuego[xj][yj] = ficha;
+                    }
+                    else {
+                        tablerojuego[xj][yj] = ficha;
+                    }
+                    break;
+                case "e":
+                    System.out.println("------------");
+                    break;
+                default:
+                    System.out.println("Ingrese un comando válido");                   
+                    break;
+                
+                
+            }
+            
+            
+            
+            
+            
+        } while (!cambpos.equals("e"));
     }
 }
