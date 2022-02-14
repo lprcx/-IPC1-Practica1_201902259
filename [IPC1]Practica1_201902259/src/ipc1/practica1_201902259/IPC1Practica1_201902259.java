@@ -6,15 +6,16 @@ package ipc1.practica1_201902259;
 
 import java.util.Scanner;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class IPC1Practica1_201902259 {
 
+    //Variables globales para que el usuario ingrese los datos
     static String nombre;
     static String tamanio;
     static String posicion;
-    static int comida, paredes, trampas;
+    static int comida, paredes, trampas, numcom;
 
+    //Menú principal
     public static void main(String[] args) {
 
         Scanner sn = new Scanner(System.in);
@@ -33,6 +34,7 @@ public class IPC1Practica1_201902259 {
 
                     break;
                 case 2:
+                    /*tablapos();*/
                     break;
                 case 3:
                     System.out.println("Hasta la procsimaaa");
@@ -48,10 +50,13 @@ public class IPC1Practica1_201902259 {
     static String[][] tablerocomida;
     static String[][] tableropared;
     static String[][] tablerotrampas;
+    //Arreglo de íconos
     static String[] iconos;
+    //Variables para escoger la ficha 
     static int iconjug;
     static String ficha;
 
+    //Metodo para el menu de juego y pedir los datos para jugar. Creación de las matrices de comida, pared y trampas, también los rangos.
     public static void menuJuego() {
         Scanner sn = new Scanner(System.in);
         Random ran = new Random();
@@ -99,6 +104,7 @@ public class IPC1Practica1_201902259 {
 
         //System.out.println("m:" + m);
         //System.out.println("n" + n);
+        //Asignando espacios vacios al tablero comida
         tablerocomida = new String[m][n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
@@ -107,7 +113,7 @@ public class IPC1Practica1_201902259 {
 
         }
 
-        //Icono
+        //Icono, convertí los enteros a caracteres ascci y de ascci a String
         int[] ascci = {178, 175, 166, 195, 184, 244, 169, 157, 190, 241};
         iconos = new String[10];
         char[] ico = new char[10];
@@ -209,6 +215,7 @@ public class IPC1Practica1_201902259 {
             System.out.println("");
         }
          */
+        //Muestra el nombre del Jugador
         System.out.println("-----------------------");
         System.out.println("Jugador: " + nombre);
         tablerounido(m, n);
@@ -235,8 +242,10 @@ public class IPC1Practica1_201902259 {
 
         Jugar(filaj, columnaj, ficha, nombre);
     }
+    //Creando el tablero del juego
     static String[][] tablerojuego;
 
+    //Metodo para unir los tableros trampa, paredes y comida en el tablero de juego
     public static void tablerounido(int x, int y) {
         tablerojuego = new String[x][y];
         for (int i = 0; i < x; i++) {
@@ -247,22 +256,22 @@ public class IPC1Practica1_201902259 {
         }
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
-                if (!tablerocomida[i][j].equals(" ")) {
-                    tablerojuego[i][j] = tablerocomida[i][j];
+                if (!tableropared[i][j].equals(" ")) {
+                    tablerojuego[i][j] = tableropared[i][j];
 
                 }
                 if (!tablerotrampas[i][j].equals(" ")) {
                     tablerojuego[i][j] = tablerotrampas[i][j];
                 }
-
-                if (!tableropared[i][j].equals(" ")) {
-                    tablerojuego[i][j] = tableropared[i][j];
+                if (!tablerocomida[i][j].equals(" ")) {
+                    tablerojuego[i][j] = tablerocomida[i][j];
 
                 }
 
             }
 
         }
+        //Imprimiendo el tablero de juego
         for (int j = 0; j < x; j++) {
             for (int k = 0; k < y; k++) {
                 System.out.print(tablerojuego[j][k] + "|");
@@ -273,6 +282,7 @@ public class IPC1Practica1_201902259 {
 
     }
 
+    //Metodo para jugar en el tablero e imprimir el nombre, el punteo y las vidas
     public static void Jugar(int xj, int yj, String fichajug, String nombre) {
 
         Scanner sn = new Scanner(System.in);
@@ -280,7 +290,7 @@ public class IPC1Practica1_201902259 {
         int punteo = 0;
         int vidas = 3;
         String cambpos = "";
-
+        int contadorcom = comida;
         do {
             System.out.println("--------------");
             System.out.println("Jugador: " + nombre + "     Punteo: " + punteo + "      Vidas: " + vidas);
@@ -294,8 +304,11 @@ public class IPC1Practica1_201902259 {
                 System.out.print("|");
                 System.out.println("");
             }
+            //Configurando controles del juego
             cambpos = sn.next();
+
             switch (cambpos) {
+                //Movimiento hacia la izquierda
                 case "a":
                     int yjaux = 0;
                     if ((yj - 1) < 0) {
@@ -315,6 +328,8 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
+                        contadorcom = contadorcom - 1;
+
                     } else if (tablerojuego[xj][yjaux].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         yj = yj - 1;
@@ -326,6 +341,11 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
+                        contadorcom = contadorcom - 1;
+                    } else if (tablerojuego[xj][yjaux].equals("X")) {
+                        vidas = vidas - 1;
+
+                    } else if (tablerojuego[xj][yjaux].equals("#")) {
                     } else {
                         tablerojuego[xj][yj] = " ";
                         yj = yj - 1;
@@ -339,6 +359,7 @@ public class IPC1Practica1_201902259 {
                     }
 
                     break;
+                //Movimiento hacia abajo
                 case "s":
                     int xjaux1 = 0;
                     if ((xj + 1) > (tablerojuego.length - 1)) {
@@ -358,6 +379,7 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
+                        contadorcom = contadorcom - 1;
                     } else if (tablerojuego[xjaux1][yj].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         xj = xj + 1;
@@ -369,6 +391,12 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
+                        contadorcom = contadorcom - 1;
+                    } else if (tablerojuego[xjaux1][yj].equals("X")) {
+                        vidas = vidas - 1;
+
+                    } else if (tablerojuego[xjaux1][yj].equals("#")) {
+
                     } else {
                         tablerojuego[xj][yj] = " ";
                         xj = xj + 1;
@@ -382,6 +410,7 @@ public class IPC1Practica1_201902259 {
                     }
 
                     break;
+                //Movimiento hacia arriba
                 case "w":
                     int xjaux = 0;
                     if ((xj - 1) < 0) {
@@ -401,6 +430,7 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
+                        contadorcom = contadorcom - 1;
                     } else if (tablerojuego[xjaux][yj].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         xj = xj - 1;
@@ -412,6 +442,11 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
+                        contadorcom = contadorcom - 1;
+                    } else if (tablerojuego[xjaux][yj].equals("X")) {
+                        vidas = vidas - 1;
+
+                    } else if (tablerojuego[xjaux][yj].equals("#")) {
                     } else {
                         tablerojuego[xj][yj] = " ";
                         xj = xj - 1;
@@ -425,6 +460,7 @@ public class IPC1Practica1_201902259 {
                     }
 
                     break;
+                //Movimiento hacia la derecha
                 case "d":
                     int yjaux1 = 0;
                     if ((yj + 1) > (tablerojuego[0].length - 1)) {
@@ -444,6 +480,7 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
+                        contadorcom = contadorcom - 1;
                     } else if (tablerojuego[xj][yjaux1].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         yj = yj + 1;
@@ -455,6 +492,11 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
+                        contadorcom = contadorcom - 1;
+                    } else if (tablerojuego[xj][yjaux1].equals("X")) {
+                        vidas = vidas - 1;
+
+                    } else if (tablerojuego[xj][yjaux1].equals("#")) {
                     } else {
                         tablerojuego[xj][yj] = " ";
                         yj = yj + 1;
@@ -468,6 +510,7 @@ public class IPC1Practica1_201902259 {
                     }
 
                     break;
+                //Movimiento hacia la izquierda
                 case "4":
 
                     if ((yj - 1) < 0) {
@@ -487,6 +530,7 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
+                        contadorcom = contadorcom - 1;
                     } else if (tablerojuego[xj][yjaux].equals("?") || tablerojuego[xj][yjaux].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         yj = yj - 1;
@@ -498,6 +542,11 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
+                        contadorcom = contadorcom - 1;
+                    } else if (tablerojuego[xj][yjaux].equals("X")) {
+                        vidas = vidas - 1;
+
+                    } else if (tablerojuego[xj][yjaux].equals("#")) {
                     } else {
                         tablerojuego[xj][yj] = " ";
                         yj = yj - 1;
@@ -511,7 +560,7 @@ public class IPC1Practica1_201902259 {
                     }
 
                     break;
-
+                //Movimiento hacia abajo
                 case "5":
                     if ((xj + 1) > (tablerojuego.length - 1)) {
                         xjaux1 = 0;
@@ -530,6 +579,7 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
+                        contadorcom = contadorcom - 1;
                     } else if (tablerojuego[xjaux1][yj].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         xj = xj + 1;
@@ -541,6 +591,12 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
+                        contadorcom = contadorcom - 1;
+                    } else if (tablerojuego[xjaux1][yj].equals("X")) {
+                        vidas = vidas - 1;
+
+                    } else if (tablerojuego[xjaux1][yj].equals("#")) {
+
                     } else {
                         tablerojuego[xj][yj] = " ";
                         xj = xj + 1;
@@ -554,7 +610,7 @@ public class IPC1Practica1_201902259 {
                     }
 
                     break;
-
+                //Movimiento hacia arriba
                 case "8":
                     if ((xj - 1) < 0) {
                         xjaux = tablerojuego.length - 1;
@@ -573,6 +629,7 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
+                        contadorcom = contadorcom - 1;
                     } else if (tablerojuego[xjaux][yj].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         xj = xj - 1;
@@ -584,6 +641,7 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
+                        contadorcom = contadorcom - 1;
                     } else if (tablerojuego[xjaux][yj].equals("X")) {
                         vidas = vidas - 1;
 
@@ -602,6 +660,7 @@ public class IPC1Practica1_201902259 {
                     }
 
                     break;
+                //Movimiento hacia la izquierda
                 case "6":
 
                     if ((yj + 1) > (tablerojuego[0].length - 1)) {
@@ -621,6 +680,7 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 5;
+                        contadorcom = contadorcom - 1;
                     } else if (tablerojuego[xj][yjaux1].equals("?")) {
                         tablerojuego[xj][yj] = " ";
                         yj = yj + 1;
@@ -632,6 +692,11 @@ public class IPC1Practica1_201902259 {
                             tablerojuego[xj][yj] = ficha;
                         }
                         punteo = punteo + 10;
+                        contadorcom = contadorcom - 1;
+                    } else if (tablerojuego[xj][yjaux1].equals("X")) {
+                        vidas = vidas - 1;
+
+                    } else if (tablerojuego[xj][yjaux1].equals("#")) {
                     } else {
                         tablerojuego[xj][yj] = " ";
                         yj = yj + 1;
@@ -652,7 +717,7 @@ public class IPC1Practica1_201902259 {
                     System.out.println("Ingrese un comando válido");
                     break;
 
-            }
+            } //Validar el contador cuando llega a 0 vidas
             if (vidas == 0) {
                 System.out.println("                                                                                       \n"
                         + " @@@@@@@@   @@@@@@   @@@@@@@@@@   @@@@@@@@      @@@@@@   @@@  @@@  @@@@@@@@  @@@@@@@   \n"
@@ -667,7 +732,42 @@ public class IPC1Practica1_201902259 {
                         + " :: :: :    :   : :   :      :    : :: ::       : :  :      :      : :: ::    :   : :");
                 break;
 
+            }//Validando que el contador de comida llegue a cero para ganar
+            if (contadorcom == 0) {
+                System.out.println("$$\\     $$\\                         $$\\      $$\\ $$\\           $$\\ \n"
+                        + "\\$$\\   $$  |                        $$ | $\\  $$ |\\__|          $$ |\n"
+                        + " \\$$\\ $$  /$$$$$$\\  $$\\   $$\\       $$ |$$$\\ $$ |$$\\ $$$$$$$\\  $$ |\n"
+                        + "  \\$$$$  /$$  __$$\\ $$ |  $$ |      $$ $$ $$\\$$ |$$ |$$  __$$\\ $$ |\n"
+                        + "   \\$$  / $$ /  $$ |$$ |  $$ |      $$$$  _$$$$ |$$ |$$ |  $$ |\\__|\n"
+                        + "    $$ |  $$ |  $$ |$$ |  $$ |      $$$  / \\$$$ |$$ |$$ |  $$ |    \n"
+                        + "    $$ |  \\$$$$$$  |\\$$$$$$  |      $$  /   \\$$ |$$ |$$ |  $$ |$$\\ \n"
+                        + "    \\__|   \\______/  \\______/       \\__/     \\__|\\__|\\__|  \\__|\\__|");
+                break;
             }
+
         } while (!cambpos.equals("e"));
+
     }
+    /*
+    int contadorcom = comida;
+        contadorcom++;
+    
+    
+    private static void tablapos() {
+            int punteo;
+            System.out.println("Tabla de Posiciones");
+            System.out.println("Jugador: " + nombre + "............" + "punteo");
+        do {
+            
+            
+
+            int comida;
+            
+
+            
+
+           
+        } 
+        while ();
+    } */
 }
